@@ -3,7 +3,8 @@ import cors from 'cors';
 import * as dotenv from 'dotenv';
 import { Client } from 'pg';
 
-dotenv.config();
+import path from 'path';
+dotenv.config({ path: path.join(__dirname, '../../.env') });
 
 const app = express();
 const port = process.env.PORT || 4005;

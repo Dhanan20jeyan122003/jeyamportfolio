@@ -6,7 +6,7 @@ const pdfParse = require('pdf-parse');
 
 dotenv.config();
 
-const connectionString = process.env.DATABASE_URL || 'postgresql://postgres.bblbdodziysbvlisupzx:jeyamportfoliodb@aws-0-ap-northeast-1.pooler.supabase.com:6543/postgres';
+const connectionString = process.env.DATABASE_URL as string;
 const OLLAMA_URL = 'http://192.168.1.16:11434';
 const EMBED_MODEL = 'nomic-embed-text';
 

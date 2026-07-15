@@ -2,7 +2,7 @@ import { Client } from 'pg';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
-const connectionString = process.env.DATABASE_URL || 'postgresql://postgres.bblbdodziysbvlisupzx:jeyamportfoliodb@aws-0-ap-northeast-1.pooler.supabase.com:6543/postgres';
+const connectionString = process.env.DATABASE_URL as string;
 
 const client = new Client({
   connectionString,

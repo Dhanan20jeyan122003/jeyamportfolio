@@ -11,7 +11,7 @@ export default function ChatPanel() {
   const endOfMessagesRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
-    endOfMessagesRef.current?.scrollIntoView({ behavior: "smooth" });
+    endOfMessagesRef.current?.scrollIntoView({ behavior: isStreaming ? "auto" : "smooth" });
   }, [messages, isStreaming]);
 
   const handleSubmit = async (e?: React.FormEvent) => {
@@ -69,8 +69,6 @@ export default function ChatPanel() {
 
   const handleSuggestion = (text: string) => {
     setInput(text);
-    // React state update might not be synchronous for the submit, but we can call submit with the text
-    // A slightly cleaner way for this simple implementation:
     setTimeout(() => {
       document.getElementById('chat-submit-btn')?.click();
     }, 50);
@@ -100,22 +98,22 @@ export default function ChatPanel() {
             </button>
           </div>
 
-          <div className="flex-1 overflow-y-auto p-5 bg-paper flex flex-col gap-4">
+          <div className="flex-1 overflow-y-auto p-5 bg-paper/50 flex flex-col gap-5">
             {messages.length === 0 && (
               <div className="text-center mt-4">
                 <p className="text-ink-soft text-sm mb-6">Hi, I'm Dhananjeyan's AI assistant. Ask me anything about his work, skills, or experience!</p>
                 <div className="flex flex-wrap justify-center gap-2">
-                  <button onClick={() => handleSuggestion("What are his top skills?")} className="bg-white border border-line rounded-full px-3 py-1.5 text-xs text-ink hover:border-violet transition-colors">What are his top skills?</button>
-                  <button onClick={() => handleSuggestion("What did he do at SetNext?")} className="bg-white border border-line rounded-full px-3 py-1.5 text-xs text-ink hover:border-violet transition-colors">What did he do at SetNext?</button>
-                  <button onClick={() => handleSuggestion("Tell me about the Heart Disease project.")} className="bg-white border border-line rounded-full px-3 py-1.5 text-xs text-ink hover:border-violet transition-colors">Tell me about the Heart Disease project.</button>
+                  <button onClick={() => handleSuggestion("What are his top skills?")} className="bg-white shadow-sm border border-line rounded-full px-4 py-2 text-xs text-ink hover:border-violet transition-colors">What are his top skills?</button>
+                  <button onClick={() => handleSuggestion("What did he do at SetNext?")} className="bg-white shadow-sm border border-line rounded-full px-4 py-2 text-xs text-ink hover:border-violet transition-colors">What did he do at SetNext?</button>
+                  <button onClick={() => handleSuggestion("Tell me about the Heart Disease project.")} className="bg-white shadow-sm border border-line rounded-full px-4 py-2 text-xs text-ink hover:border-violet transition-colors">Tell me about the Heart Disease project.</button>
                 </div>
               </div>
             )}
 
             {messages.map((msg, i) => (
               <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                <div className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm ${msg.role === 'user' ? 'bg-ink text-white rounded-br-sm' : 'bg-white border border-line text-ink rounded-bl-sm'}`}>
-                  {msg.content || <span className="flex items-center gap-1 h-5"><span className="w-1.5 h-1.5 bg-violet rounded-full animate-bounce"></span><span className="w-1.5 h-1.5 bg-violet rounded-full animate-bounce [animation-delay:0.2s]"></span><span className="w-1.5 h-1.5 bg-violet rounded-full animate-bounce [animation-delay:0.4s]"></span></span>}
+                <div className={`max-w-[85%] rounded-[20px] px-4.5 py-3 text-[14.5px] leading-relaxed shadow-sm ${msg.role === 'user' ? 'bg-gradient-to-br from-violet to-coral text-white rounded-br-sm' : 'bg-white border border-line/60 text-ink rounded-bl-sm'}`}>
+                  {msg.content || <span className="flex items-center gap-1.5 h-5"><span className="w-1.5 h-1.5 bg-violet rounded-full animate-bounce"></span><span className="w-1.5 h-1.5 bg-violet rounded-full animate-bounce [animation-delay:0.15s]"></span><span className="w-1.5 h-1.5 bg-violet rounded-full animate-bounce [animation-delay:0.3s]"></span></span>}
                 </div>
               </div>
             ))}

@@ -8,20 +8,27 @@ import { useEffect } from "react";
 
 export default function Home() {
   useEffect(() => {
-    // Lenis smooth scroll
+    let lenis: any;
+    let animationFrameId: number;
+    
     const loadLenis = async () => {
       const Lenis = (await import("@studio-freight/lenis")).default;
-      const lenis = new Lenis({
+      lenis = new Lenis({
         duration: 1.2,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       });
       function raf(time: number) {
         lenis.raf(time);
-        requestAnimationFrame(raf);
+        animationFrameId = requestAnimationFrame(raf);
       }
-      requestAnimationFrame(raf);
+      animationFrameId = requestAnimationFrame(raf);
     };
     loadLenis();
+
+    return () => {
+      if (lenis) lenis.destroy();
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+    };
   }, []);
 
   return (
@@ -109,6 +116,40 @@ export default function Home() {
             <p className="text-[14px] text-ink-soft mb-5 leading-relaxed">User management, attendance, marks, assignments & notices.</p>
             <div className="flex flex-wrap gap-2">
               <span className="font-mono text-[10.5px] bg-ink/5 border border-line px-3 py-1.5 rounded-full text-ink-soft">Spring Boot</span>
+              <span className="font-mono text-[10.5px] bg-ink/5 border border-line px-3 py-1.5 rounded-full text-ink-soft">MySQL</span>
+            </div>
+          </div>
+
+          {/* Work Card 4 */}
+          <div className="bg-paper-2 border border-line rounded-[22px] p-5 hover:shadow-[0_24px_46px_-18px_rgba(27,16,48,0.22)] hover:-translate-y-2 transition-all duration-500 group cursor-pointer">
+            <div className="h-[180px] rounded-[18px] mb-5 bg-gradient-to-br from-[#FFD166] to-[#ffb703] relative overflow-hidden flex items-center justify-center">
+              <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              <div className="w-[85%] h-[85%] bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-xl group-hover:scale-105 group-hover:rotate-1 transition-transform duration-500 flex items-center justify-center">
+                <span className="font-mono text-[11.5px] text-white/90 drop-shadow-md">Furniture Website</span>
+              </div>
+            </div>
+            <h3 className="font-grotesk text-[19px] font-bold mb-2 group-hover:text-[#ffb703] transition-colors">Furniture Website</h3>
+            <p className="text-[14px] text-ink-soft mb-5 leading-relaxed">Responsive furniture e-commerce interface with filters and interactive forms.</p>
+            <div className="flex flex-wrap gap-2">
+              <span className="font-mono text-[10.5px] bg-ink/5 border border-line px-3 py-1.5 rounded-full text-ink-soft">HTML/CSS</span>
+              <span className="font-mono text-[10.5px] bg-ink/5 border border-line px-3 py-1.5 rounded-full text-ink-soft">JS</span>
+            </div>
+          </div>
+
+          {/* Work Card 5 */}
+          <div className="bg-paper-2 border border-line rounded-[22px] p-5 hover:shadow-[0_24px_46px_-18px_rgba(27,16,48,0.22)] hover:-translate-y-2 transition-all duration-500 group cursor-pointer md:translate-y-12">
+            <div className="h-[180px] rounded-[18px] mb-5 bg-gradient-to-br from-[#118AB2] to-[#073B4C] relative overflow-hidden flex items-center justify-center">
+              <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              <div className="w-[85%] h-[85%] bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-xl group-hover:scale-105 group-hover:-rotate-1 transition-transform duration-500 flex items-center justify-center">
+                <span className="font-mono text-[11.5px] text-white/90 drop-shadow-md">E-Book System</span>
+              </div>
+            </div>
+            <h3 className="font-grotesk text-[19px] font-bold mb-2 group-hover:text-[#118AB2] transition-colors">E-Book Management</h3>
+            <p className="text-[14px] text-ink-soft mb-5 leading-relaxed">Full CRUD book management with authentication and session handling.</p>
+            <div className="flex flex-wrap gap-2">
+              <span className="font-mono text-[10.5px] bg-ink/5 border border-line px-3 py-1.5 rounded-full text-ink-soft">Java/JSP</span>
               <span className="font-mono text-[10.5px] bg-ink/5 border border-line px-3 py-1.5 rounded-full text-ink-soft">MySQL</span>
             </div>
           </div>

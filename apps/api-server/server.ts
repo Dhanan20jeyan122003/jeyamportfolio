@@ -11,7 +11,7 @@ const port = process.env.PORT || 4005;
 app.use(cors());
 app.use(express.json());
 
-const connectionString = process.env.DATABASE_URL || 'postgresql://postgres.bblbdodziysbvlisupzx:jeyamportfoliodb@aws-0-ap-northeast-1.pooler.supabase.com:6543/postgres';
+const connectionString = process.env.DATABASE_URL as string;
 const OLLAMA_URL = 'http://192.168.1.16:11434';
 const CHAT_MODEL = 'llama3:8b-instruct-q8_0';
 const EMBED_MODEL = 'nomic-embed-text';
@@ -53,7 +53,7 @@ app.post('/api/chat', async (req, res) => {
     // 2. Similarity search in Supabase
     // Using match_content function created in schema.sql
     const searchRes = await client.query(
-      'SELECT * FROM match_content($1::vector, 0.5, 5)',
+      'SELECT * FROM match_content($1::vector, 0.2, 8)',
       [`[${queryEmbedding.join(',')}]`]
     );
 
@@ -63,8 +63,8 @@ app.post('/api/chat', async (req, res) => {
     // 3. Construct prompt
     const systemPrompt = `You are Dhananjeyan's portfolio AI assistant. 
 Answer the user's question ONLY using the provided context. 
+If the answer is NOT explicitly stated in the context, you MUST say exactly: "I don't have that information." Do not guess, assume, or make up facts (like years of experience).
 Be concise, friendly, and confident. 
-If unsure, direct the user to the contact section.
 Do NOT mention "the context" or "the provided text" in your response.
 
 Context:

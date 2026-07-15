@@ -2,7 +2,7 @@ import { Client } from 'pg';
 import * as fs from 'fs';
 import * as path from 'path';
 
-const connectionString = 'postgresql://postgres.bblbdodziysbvlisupzx:jeyamportfoliodb@aws-0-ap-northeast-1.pooler.supabase.com:6543/postgres';
+const connectionString = process.env.DATABASE_URL as string;
 
 async function initDb() {
   const client = new Client({

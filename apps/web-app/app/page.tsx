@@ -10,7 +10,7 @@ export default function Home() {
   useEffect(() => {
     let lenis: any;
     let animationFrameId: number;
-    
+
     const loadLenis = async () => {
       const Lenis = (await import("@studio-freight/lenis")).default;
       lenis = new Lenis({
@@ -67,7 +67,7 @@ export default function Home() {
       <section id="work" className="px-6 md:px-10 py-24 max-w-7xl mx-auto">
         <span className="inline-block px-3 py-1.5 rounded-full bg-coral/10 text-coral-dark font-mono text-[12.5px] mb-5">selected work</span>
         <h2 className="font-grotesk font-bold text-4xl max-w-[600px] tracking-[-0.01em]">A few things I'm proud of.</h2>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
           {/* Work Card 1 */}
           <div className="bg-paper-2 border border-line rounded-[22px] p-5 hover:shadow-[0_24px_46px_-18px_rgba(27,16,48,0.22)] hover:-translate-y-2 transition-all duration-500 group cursor-pointer">
@@ -80,14 +80,20 @@ export default function Home() {
             </div>
             <h3 className="font-grotesk text-[19px] font-bold mb-2 group-hover:text-violet transition-colors">Heart Disease Prediction</h3>
             <p className="text-[14px] text-ink-soft mb-5 leading-relaxed">Hybrid ML/DL models for improved diagnosis accuracy.</p>
-            <div className="flex flex-wrap gap-2">
-              <span className="font-mono text-[10.5px] bg-ink/5 border border-line px-3 py-1.5 rounded-full text-ink-soft">Python</span>
-              <span className="font-mono text-[10.5px] bg-ink/5 border border-line px-3 py-1.5 rounded-full text-ink-soft">ML/DL</span>
+            <div className="flex items-center justify-between">
+              <div className="flex flex-wrap gap-2">
+                <span className="font-mono text-[10.5px] bg-ink/5 border border-line px-3 py-1.5 rounded-full text-ink-soft">Python</span>
+                <span className="font-mono text-[10.5px] bg-ink/5 border border-line px-3 py-1.5 rounded-full text-ink-soft">ML/DL</span>
+              </div>
+              <a href="https://github.com/Dhanan20jeyan122003/Final-Year-Project" className="font-mono text-[10px] uppercase tracking-wider border border-line px-3 py-1.5 rounded-full text-ink-soft hover:bg-ink hover:text-white hover:border-ink transition-colors flex items-center gap-1.5" title="View Source">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                Source
+              </a>
             </div>
           </div>
 
-          {/* Work Card 2 (offset) */}
-          <div className="bg-paper-2 border border-line rounded-[22px] p-5 hover:shadow-[0_24px_46px_-18px_rgba(27,16,48,0.22)] hover:-translate-y-2 transition-all duration-500 group cursor-pointer md:translate-y-12">
+          {/* Work Card 2 */}
+          <div className="bg-paper-2 border border-line rounded-[22px] p-5 hover:shadow-[0_24px_46px_-18px_rgba(27,16,48,0.22)] hover:-translate-y-2 transition-all duration-500 group cursor-pointer">
             <div className="h-[180px] rounded-[18px] mb-5 bg-gradient-to-br from-coral to-[#ff7a93] relative overflow-hidden flex items-center justify-center">
               <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
@@ -97,9 +103,15 @@ export default function Home() {
             </div>
             <h3 className="font-grotesk text-[19px] font-bold mb-2 group-hover:text-coral transition-colors">E-Commerce Eflyer</h3>
             <p className="text-[14px] text-ink-soft mb-5 leading-relaxed">Full-stack e-commerce with authentication and product management.</p>
-            <div className="flex flex-wrap gap-2">
-              <span className="font-mono text-[10.5px] bg-ink/5 border border-line px-3 py-1.5 rounded-full text-ink-soft">React</span>
-              <span className="font-mono text-[10.5px] bg-ink/5 border border-line px-3 py-1.5 rounded-full text-ink-soft">Express</span>
+            <div className="flex items-center justify-between">
+              <div className="flex flex-wrap gap-2">
+                <span className="font-mono text-[10.5px] bg-ink/5 border border-line px-3 py-1.5 rounded-full text-ink-soft">React</span>
+                <span className="font-mono text-[10.5px] bg-ink/5 border border-line px-3 py-1.5 rounded-full text-ink-soft">Express</span>
+              </div>
+              <a href="https://github.com/Dhanan20jeyan122003/e-commerce-Eflyer" className="font-mono text-[10px] uppercase tracking-wider border border-line px-3 py-1.5 rounded-full text-ink-soft hover:bg-ink hover:text-white hover:border-ink transition-colors flex items-center gap-1.5" title="View Source">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                Source
+              </a>
             </div>
           </div>
 
@@ -114,9 +126,15 @@ export default function Home() {
             </div>
             <h3 className="font-grotesk text-[19px] font-bold mb-2 group-hover:text-lime-dark transition-colors">School Management System</h3>
             <p className="text-[14px] text-ink-soft mb-5 leading-relaxed">User management, attendance, marks, assignments & notices.</p>
-            <div className="flex flex-wrap gap-2">
-              <span className="font-mono text-[10.5px] bg-ink/5 border border-line px-3 py-1.5 rounded-full text-ink-soft">Spring Boot</span>
-              <span className="font-mono text-[10.5px] bg-ink/5 border border-line px-3 py-1.5 rounded-full text-ink-soft">MySQL</span>
+            <div className="flex items-center justify-between">
+              <div className="flex flex-wrap gap-2">
+                <span className="font-mono text-[10.5px] bg-ink/5 border border-line px-3 py-1.5 rounded-full text-ink-soft">Spring Boot</span>
+                <span className="font-mono text-[10.5px] bg-ink/5 border border-line px-3 py-1.5 rounded-full text-ink-soft">MySQL</span>
+              </div>
+              <a href="https://github.com/Dhanan20jeyan122003/School_Management_System" className="font-mono text-[10px] uppercase tracking-wider border border-line px-3 py-1.5 rounded-full text-ink-soft hover:bg-ink hover:text-white hover:border-ink transition-colors flex items-center gap-1.5" title="View Source">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                Source
+              </a>
             </div>
           </div>
 
@@ -131,14 +149,20 @@ export default function Home() {
             </div>
             <h3 className="font-grotesk text-[19px] font-bold mb-2 group-hover:text-[#ffb703] transition-colors">Furniture Website</h3>
             <p className="text-[14px] text-ink-soft mb-5 leading-relaxed">Responsive furniture e-commerce interface with filters and interactive forms.</p>
-            <div className="flex flex-wrap gap-2">
-              <span className="font-mono text-[10.5px] bg-ink/5 border border-line px-3 py-1.5 rounded-full text-ink-soft">HTML/CSS</span>
-              <span className="font-mono text-[10.5px] bg-ink/5 border border-line px-3 py-1.5 rounded-full text-ink-soft">JS</span>
+            <div className="flex items-center justify-between">
+              <div className="flex flex-wrap gap-2">
+                <span className="font-mono text-[10.5px] bg-ink/5 border border-line px-3 py-1.5 rounded-full text-ink-soft">HTML/CSS</span>
+                <span className="font-mono text-[10.5px] bg-ink/5 border border-line px-3 py-1.5 rounded-full text-ink-soft">JS</span>
+              </div>
+              <a href="https://github.com/Dhanan20jeyan122003/Furniture-website" className="font-mono text-[10px] uppercase tracking-wider border border-line px-3 py-1.5 rounded-full text-ink-soft hover:bg-ink hover:text-white hover:border-ink transition-colors flex items-center gap-1.5" title="View Source">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                Source
+              </a>
             </div>
           </div>
 
           {/* Work Card 5 */}
-          <div className="bg-paper-2 border border-line rounded-[22px] p-5 hover:shadow-[0_24px_46px_-18px_rgba(27,16,48,0.22)] hover:-translate-y-2 transition-all duration-500 group cursor-pointer md:translate-y-12">
+          <div className="bg-paper-2 border border-line rounded-[22px] p-5 hover:shadow-[0_24px_46px_-18px_rgba(27,16,48,0.22)] hover:-translate-y-2 transition-all duration-500 group cursor-pointer">
             <div className="h-[180px] rounded-[18px] mb-5 bg-gradient-to-br from-[#118AB2] to-[#073B4C] relative overflow-hidden flex items-center justify-center">
               <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
@@ -148,9 +172,15 @@ export default function Home() {
             </div>
             <h3 className="font-grotesk text-[19px] font-bold mb-2 group-hover:text-[#118AB2] transition-colors">E-Book Management</h3>
             <p className="text-[14px] text-ink-soft mb-5 leading-relaxed">Full CRUD book management with authentication and session handling.</p>
-            <div className="flex flex-wrap gap-2">
-              <span className="font-mono text-[10.5px] bg-ink/5 border border-line px-3 py-1.5 rounded-full text-ink-soft">Java/JSP</span>
-              <span className="font-mono text-[10.5px] bg-ink/5 border border-line px-3 py-1.5 rounded-full text-ink-soft">MySQL</span>
+            <div className="flex items-center justify-between">
+              <div className="flex flex-wrap gap-2">
+                <span className="font-mono text-[10.5px] bg-ink/5 border border-line px-3 py-1.5 rounded-full text-ink-soft">Java/JSP</span>
+                <span className="font-mono text-[10.5px] bg-ink/5 border border-line px-3 py-1.5 rounded-full text-ink-soft">MySQL</span>
+              </div>
+              <a href="https://github.com/Dhanan20jeyan122003/E_Book" className="font-mono text-[10px] uppercase tracking-wider border border-line px-3 py-1.5 rounded-full text-ink-soft hover:bg-ink hover:text-white hover:border-ink transition-colors flex items-center gap-1.5" title="View Source">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                Source
+              </a>
             </div>
           </div>
         </div>
@@ -162,7 +192,7 @@ export default function Home() {
             ★ Available for hire
           </div>
           <div className="absolute inset-0 rounded-[28px] bg-gradient-to-br from-[#E7E1F7] to-[#F3F0FA] border-2 border-dashed border-violet opacity-70 flex flex-col items-center justify-center gap-2 font-mono text-xs text-violet-dark text-center p-5">
-            <span>your photo goes here<br/>4:5 portrait</span>
+            <span>your photo goes here<br />4:5 portrait</span>
           </div>
           <div className="absolute -bottom-5 -right-6 bg-ink text-paper font-grotesk font-medium text-[12.5px] px-4 py-2.5 rounded-full flex items-center gap-2 shadow-[0_12px_24px_-10px_rgba(27,16,48,0.4)] rotate-6 z-10">
             📍 Remote — IST
@@ -172,33 +202,76 @@ export default function Home() {
         <div>
           <span className="inline-block px-3 py-1.5 rounded-full bg-coral/10 text-coral-dark font-mono text-[12.5px] mb-5">experience</span>
           <h2 className="font-grotesk font-bold text-4xl tracking-[-0.01em]">Where I've been building things.</h2>
-          
+
           <div className="flex flex-col mt-12">
             <div className="grid grid-cols-[50px_1fr] md:grid-cols-[90px_1fr] gap-6 py-6 border-t border-line items-start">
               <div className="font-grotesk font-bold text-3xl text-coral opacity-50">01</div>
               <div>
-                <div className="font-grotesk font-medium text-lg">AI/ML Engineer Intern — SetNext</div>
+                <div className="font-grotesk font-medium text-lg">AI/ML Engineer Intern — SetNext, Erode</div>
                 <div className="font-mono text-[11.5px] text-ink-soft my-1.5">Dec 2025 — Feb 2026</div>
-                <div className="text-sm text-ink-soft max-w-[600px]">Developed and trained machine learning models for prediction and data analysis. Assisted in data preprocessing, model evaluation, and AI feature integration.</div>
+                <div className="text-sm text-ink-soft max-w-[600px] leading-relaxed">Developed and trained machine learning models for prediction and data analysis. Assisted in data preprocessing, model evaluation, and AI feature integration.</div>
               </div>
             </div>
-            
+
             <div className="grid grid-cols-[50px_1fr] md:grid-cols-[90px_1fr] gap-6 py-6 border-t border-line items-start">
               <div className="font-grotesk font-bold text-3xl text-coral opacity-50">02</div>
               <div>
-                <div className="font-grotesk font-medium text-lg">Full Stack Intern — Accent Techno Soft</div>
+                <div className="font-grotesk font-medium text-lg">Full Stack Web Development Intern — Accent Techno Soft</div>
                 <div className="font-mono text-[11.5px] text-ink-soft my-1.5">Jul 2024 — Aug 2024</div>
-                <div className="text-sm text-ink-soft max-w-[600px]">Developed mini full-stack apps using React.js, Node.js, MongoDB. API integration, deployment, and version control.</div>
+                <div className="text-sm text-ink-soft max-w-[600px] leading-relaxed">Developed mini full-stack apps using React.js, Node.js, MongoDB. Experience in API integration, deployment, and version control.</div>
               </div>
             </div>
-            
+
             <div className="grid grid-cols-[50px_1fr] md:grid-cols-[90px_1fr] gap-6 py-6 border-t border-line items-start">
               <div className="font-grotesk font-bold text-3xl text-coral opacity-50">03</div>
               <div>
-                <div className="font-grotesk font-medium text-lg">Android Intern — Phoenix Soft Tech</div>
+                <div className="font-grotesk font-medium text-lg">Android App Development Intern — Phoenix Soft Tech</div>
                 <div className="font-mono text-[11.5px] text-ink-soft my-1.5">Jun 2023 — Jul 2023</div>
-                <div className="text-sm text-ink-soft max-w-[600px]">Built Android apps with Java, improving UI/UX. Integrated SQLite and Google Maps API for data storage and location services.</div>
+                <div className="text-sm text-ink-soft max-w-[600px] leading-relaxed">Built Android apps with Java, improving UI/UX. Integrated SQLite and Google Maps API for data storage and location services.</div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" className="px-6 md:px-10 py-10 md:py-16 max-w-7xl mx-auto">
+        <span className="inline-block px-3 py-1.5 rounded-full bg-violet/10 text-violet-dark font-mono text-[12.5px] mb-5">capabilities</span>
+        <h2 className="font-grotesk font-bold text-4xl tracking-[-0.01em]">Tools of the trade.</h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+          <div className="p-6 bg-paper-2 border border-line rounded-[22px] hover:-translate-y-1 transition-transform">
+            <h3 className="font-grotesk font-bold text-[17px] mb-4 text-violet">AI & Generative AI</h3>
+            <div className="flex flex-wrap gap-2">
+              {['LLMs', 'Ollama', 'Prompt Engineering', 'Agentic AI', 'RAG', 'MCP', 'Chatbots'].map(skill => (
+                <span key={skill} className="font-mono text-[11px] bg-violet/5 border border-violet/20 px-3 py-1.5 rounded-full text-ink-soft">{skill}</span>
+              ))}
+            </div>
+          </div>
+          
+          <div className="p-6 bg-paper-2 border border-line rounded-[22px] hover:-translate-y-1 transition-transform">
+            <h3 className="font-grotesk font-bold text-[17px] mb-4 text-coral">Languages & UI</h3>
+            <div className="flex flex-wrap gap-2">
+              {['Java', 'JavaScript', 'HTML5', 'CSS3', 'React.js', 'JSP'].map(skill => (
+                <span key={skill} className="font-mono text-[11px] bg-coral/5 border border-coral/20 px-3 py-1.5 rounded-full text-ink-soft">{skill}</span>
+              ))}
+            </div>
+          </div>
+          
+          <div className="p-6 bg-paper-2 border border-line rounded-[22px] hover:-translate-y-1 transition-transform">
+            <h3 className="font-grotesk font-bold text-[17px] mb-4 text-lime-dark">Backend & Data</h3>
+            <div className="flex flex-wrap gap-2">
+              {['Spring Boot', 'Node.js', 'Express', 'MySQL', 'MongoDB', 'SQLite'].map(skill => (
+                <span key={skill} className="font-mono text-[11px] bg-lime/10 border border-lime-dark/20 px-3 py-1.5 rounded-full text-ink-soft">{skill}</span>
+              ))}
+            </div>
+          </div>
+
+          <div className="p-6 bg-paper-2 border border-line rounded-[22px] hover:-translate-y-1 transition-transform">
+            <h3 className="font-grotesk font-bold text-[17px] mb-4 text-[#ffb703]">Tools & Soft Skills</h3>
+            <div className="flex flex-wrap gap-2">
+              {['Git', 'GitHub', 'VS Code', 'Tomcat', 'Problem Solving', 'Teamwork'].map(skill => (
+                <span key={skill} className="font-mono text-[11px] bg-[#ffb703]/10 border border-[#ffb703]/20 px-3 py-1.5 rounded-full text-ink-soft">{skill}</span>
+              ))}
             </div>
           </div>
         </div>
@@ -214,10 +287,10 @@ export default function Home() {
           Get in touch
         </button>
         <div className="flex justify-center gap-6 mt-10 relative z-10">
-          <a href="#" className="text-paper/70 text-[13px] hover:text-lime transition-colors">Email</a>
-          <a href="#" className="text-paper/70 text-[13px] hover:text-lime transition-colors">GitHub</a>
-          <a href="#" className="text-paper/70 text-[13px] hover:text-lime transition-colors">LinkedIn</a>
-          <a href="#" className="text-paper/70 text-[13px] hover:text-lime transition-colors">Resume</a>
+          <a href="mailto:kmayan1967@gmail.com" className="text-paper/70 text-[13px] hover:text-lime transition-colors">Email</a>
+          <a href="https://github.com/Dhanan20jeyan122003" target="_blank" rel="noreferrer" className="text-paper/70 text-[13px] hover:text-lime transition-colors">GitHub</a>
+          <a href="https://www.linkedin.com/in/dhananjeyan-m-837139217/" target="_blank" rel="noreferrer" className="text-paper/70 text-[13px] hover:text-lime transition-colors">LinkedIn</a>
+          <a href="/Resume_.pdf" target="_blank" rel="noreferrer" className="text-paper/70 text-[13px] hover:text-lime transition-colors">Resume</a>
         </div>
       </section>
     </main>

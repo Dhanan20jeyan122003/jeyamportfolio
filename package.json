@@ -1,0 +1,19 @@
+{
+  "name": "portfolio-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "npm-run-all --parallel dev:*",
+    "dev:web": "pnpm --filter web-app dev",
+    "dev:api": "pnpm --filter api-server dev",
+    "build": "pnpm -r run build",
+    "db:push": "pnpm --filter db push",
+    "seed": "tsx scripts/seed.ts",
+    "embed": "tsx scripts/embed-content.ts"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5",
+    "tsx": "^4.7.1",
+    "typescript": "^5.4.5"
+  }
+}

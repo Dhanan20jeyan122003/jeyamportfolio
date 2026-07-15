@@ -1,0 +1,11 @@
+{
+  "name": "@portfolio/db",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "push": "echo 'Run manual schema apply in supabase UI or via supabase-cli'"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.43.4"
+  }
+}

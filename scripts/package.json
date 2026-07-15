@@ -1,0 +1,21 @@
+{
+  "name": "@portfolio/scripts",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "seed": "tsx seed.ts",
+    "embed": "tsx embed-content.ts",
+    "embed:resume": "tsx embed-resume.ts"
+  },
+  "dependencies": {
+    "@types/pdf-parse": "^1.1.5",
+    "dotenv": "^16.4.5",
+    "pdf-parse": "^1.1.1",
+    "pg": "^8.11.5"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.11.5",
+    "tsx": "^4.7.1",
+    "typescript": "^5.4.5"
+  }
+}

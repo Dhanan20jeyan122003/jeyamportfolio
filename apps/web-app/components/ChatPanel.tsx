@@ -25,8 +25,9 @@ export default function ChatPanel() {
     setStreaming(true);
 
     try {
-      // In development, assume api-server is on port 4005
-      const res = await fetch("http://localhost:4005/api/chat", {
+      // Use the production API URL if deployed, otherwise fallback to localhost
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4005";
+      const res = await fetch(`${apiUrl}/api/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ query, sessionId: "session_" + Date.now() })

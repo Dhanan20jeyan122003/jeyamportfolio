@@ -15,7 +15,7 @@ app.use(express.json());
 const connectionString = process.env.DATABASE_URL as string;
 const GROQ_API_KEY = process.env.GROQ_API_KEY as string;
 const COHERE_API_KEY = process.env.COHERE_API_KEY as string;
-const CHAT_MODEL = 'llama3-8b-8192'; // Groq
+const CHAT_MODEL = 'llama-3.1-8b-instant'; // Groq
 const EMBED_MODEL = 'embed-english-v3.0'; // Cohere
 
 const client = new Client({ connectionString });

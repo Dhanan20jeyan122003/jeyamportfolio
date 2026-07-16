@@ -1,0 +1,22 @@
+name: Keep Alive Ping
+
+on:
+  schedule:
+    # Runs every 14 minutes
+    - cron: '*/14 * * * *'
+  workflow_dispatch: # Allows manual triggering from the GitHub Actions tab
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping API Health Endpoint
+        # Uses the repository secret BACKEND_URL (e.g., https://my-portfolio-api.onrender.com)
+        # If the secret isn't set yet, it prints a message instead of failing
+        run: |
+          if [ -z "${{ secrets.BACKEND_URL }}" ]; then
+            echo "BACKEND_URL secret is not set yet. Skipping ping."
+          else
+            echo "Pinging ${{ secrets.BACKEND_URL }}/api/health"
+            curl -f "${{ secrets.BACKEND_URL }}/api/health"
+          fi

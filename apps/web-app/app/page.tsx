@@ -45,7 +45,7 @@ export default function Home() {
             Turning <span className="text-coral">ambitious</span> ideas into <span className="text-violet">intelligent</span> reality.
           </h1>
           <p className="text-[17px] text-ink-soft max-w-[500px] mt-6">
-            Motivated Electronics and Communication Engineering graduate with skills in Java, React.js, Spring Boot, and Generative AI. Experienced in developing full-stack web applications and AI-powered solutions using LLMs, Ollama, and RAG. Quick learner with strong problem-solving and teamwork skills, seeking opportunities as a Software Developer.
+            Motivated Electronics and Communication Engineering graduate with skills in Java, React.js, Spring Boot, and Generative AI. Experienced in developing full-stack web applications and AI-powered solutions using LLMs, Ollama, and RAG. Quick learner with strong problem-solving and teamwork skills, seeking opportunities as a Software Developer,AI Engineer.
           </p>
           <div className="flex gap-4 mt-8">
             <a href="#work" className="font-grotesk font-medium text-[15px] px-6 py-3.5 rounded-full bg-coral text-white shadow-[0_10px_24px_-8px_rgba(255,77,109,0.5)] hover:-translate-y-1 hover:-rotate-1 transition-transform">
@@ -296,10 +296,10 @@ export default function Home() {
           Got a project? <span className="text-lime">Let's talk.</span>
         </h2>
         <p className="text-paper/65 mt-4 text-[15.5px] relative z-10">Or just ask the orb up top — it's usually faster than email.</p>
-        <a 
-          href="https://www.linkedin.com/in/dhananjeyan-m-837139217/" 
-          target="_blank" 
-          rel="noreferrer" 
+        <a
+          href="https://www.linkedin.com/in/dhananjeyan-m-837139217/"
+          target="_blank"
+          rel="noreferrer"
           className="inline-block font-grotesk font-medium text-[15px] px-6 py-3.5 rounded-full bg-coral text-white shadow-[0_10px_24px_-8px_rgba(255,77,109,0.5)] hover:-translate-y-1 hover:-rotate-1 transition-transform mt-8 relative z-10"
         >
           Get in touch

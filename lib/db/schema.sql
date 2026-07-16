@@ -67,13 +67,13 @@ CREATE TABLE content_embeddings (
   source_table TEXT NOT NULL,
   source_id UUID NOT NULL,
   content_text TEXT NOT NULL,
-  embedding vector(4096), -- Ollama llama3 model embedding dim usually 4096 or nomic 768. Let's use 4096 for Llama3 embeddings.
+  embedding vector(1024), -- Cohere embed-english-v3.0 model uses 1024 dimensions
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now())
 );
 
 -- Function for similarity search
 CREATE OR REPLACE FUNCTION match_content(
-  query_embedding vector(4096),
+  query_embedding vector(1024),
   match_threshold float,
   match_count int
 )

@@ -7,29 +7,34 @@ const pdfParse = require('pdf-parse');
 dotenv.config({ path: path.join(__dirname, '../.env') });
 
 const connectionString = process.env.DATABASE_URL as string;
-const OLLAMA_URL = 'http://192.168.1.16:11434';
-const EMBED_MODEL = 'nomic-embed-text';
+const COHERE_API_KEY = process.env.COHERE_API_KEY as string;
+const EMBED_MODEL = 'embed-english-v3.0';
 
 const client = new Client({
   connectionString,
 });
 
 async function generateEmbedding(text: string): Promise<number[]> {
-  const response = await fetch(`${OLLAMA_URL}/api/embeddings`, {
+  const response = await fetch('https://api.cohere.ai/v1/embed', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Authorization': `Bearer ${COHERE_API_KEY}`,
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
     body: JSON.stringify({
+      texts: [text],
       model: EMBED_MODEL,
-      prompt: text
+      input_type: 'search_document'
     })
   });
 
   if (!response.ok) {
-    throw new Error(`Ollama embedding failed: ${response.statusText}`);
+    throw new Error(`Cohere embedding failed: ${response.statusText}`);
   }
 
   const data = await response.json();
-  return data.embedding;
+  return data.embeddings[0];
 }
 
 async function embedResume() {

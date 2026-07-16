@@ -13,26 +13,42 @@ app.use(cors());
 app.use(express.json());
 
 const connectionString = process.env.DATABASE_URL as string;
-const OLLAMA_URL = 'http://192.168.1.16:11434';
-const CHAT_MODEL = 'llama3:8b-instruct-q8_0';
-const EMBED_MODEL = 'nomic-embed-text';
+const GROQ_API_KEY = process.env.GROQ_API_KEY as string;
+const COHERE_API_KEY = process.env.COHERE_API_KEY as string;
+const CHAT_MODEL = 'llama3-8b-8192'; // Groq
+const EMBED_MODEL = 'embed-english-v3.0'; // Cohere
 
 const client = new Client({ connectionString });
 client.connect().catch(err => console.error('DB connection error', err));
 
-async function generateEmbedding(text: string): Promise<number[]> {
-  const response = await fetch(`${OLLAMA_URL}/api/embeddings`, {
+async function generateEmbedding(text: string, inputType: 'search_document' | 'search_query' = 'search_query'): Promise<number[]> {
+  const response = await fetch('https://api.cohere.ai/v1/embed', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Authorization': `Bearer ${COHERE_API_KEY}`,
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
     body: JSON.stringify({
+      texts: [text],
       model: EMBED_MODEL,
-      prompt: text
+      input_type: inputType
     })
   });
-  if (!response.ok) throw new Error('Ollama embedding failed');
+  if (!response.ok) throw new Error('Cohere embedding failed');
   const data = await response.json();
-  return data.embedding;
+  return data.embeddings[0];
 }
+
+app.get('/api/health', async (req, res) => {
+  try {
+    await client.query('SELECT 1');
+    res.status(200).json({ status: 'healthy', message: 'Render and Supabase are awake!' });
+  } catch (error) {
+    console.error('Health check failed', error);
+    res.status(500).json({ status: 'error', message: 'Database connection failed' });
+  }
+});
 
 app.post('/api/chat', async (req, res) => {
   const { query, sessionId } = req.body;
@@ -71,10 +87,13 @@ Do NOT mention "the context" or "the provided text" in your response.
 Context:
 ${contextText}`;
 
-    // 4. Stream response from Ollama
-    const ollamaRes = await fetch(`${OLLAMA_URL}/api/chat`, {
+    // 4. Stream response from Groq
+    const groqRes = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 
+        'Authorization': `Bearer ${GROQ_API_KEY}`,
+        'Content-Type': 'application/json' 
+      },
       body: JSON.stringify({
         model: CHAT_MODEL,
         messages: [
@@ -85,10 +104,10 @@ ${contextText}`;
       })
     });
 
-    if (!ollamaRes.ok) throw new Error('Ollama chat failed');
-    if (!ollamaRes.body) throw new Error('No body in Ollama response');
+    if (!groqRes.ok) throw new Error('Groq chat failed');
+    if (!groqRes.body) throw new Error('No body in Groq response');
 
-    const reader = ollamaRes.body.getReader();
+    const reader = groqRes.body.getReader();
     const decoder = new TextDecoder();
     let fullResponse = '';
 
@@ -96,13 +115,19 @@ ${contextText}`;
       const { done, value } = await reader.read();
       if (done) break;
       const chunk = decoder.decode(value, { stream: true });
-      const lines = chunk.split('\n').filter(l => l.trim() !== '');
+      const lines = chunk.split('\n').filter(l => l.trim() !== '' && l.trim() !== 'data: [DONE]');
       for (const line of lines) {
-        const json = JSON.parse(line);
-        if (json.message && json.message.content) {
-          const content = json.message.content;
-          fullResponse += content;
-          res.write(`data: ${JSON.stringify({ content })}\n\n`);
+        if (line.startsWith('data: ')) {
+          try {
+            const json = JSON.parse(line.substring(6));
+            if (json.choices && json.choices[0].delta && json.choices[0].delta.content) {
+              const content = json.choices[0].delta.content;
+              fullResponse += content;
+              res.write(`data: ${JSON.stringify({ content })}\n\n`);
+            }
+          } catch (e) {
+            // ignore JSON parse errors on incomplete chunks
+          }
         }
       }
     }

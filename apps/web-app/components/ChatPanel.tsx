@@ -108,8 +108,10 @@ export default function ChatPanel() {
                 <p className="text-ink-soft text-sm mb-6">Hi, I'm Dhananjeyan's AI assistant. Ask me anything about his work, skills, or experience!</p>
                 <div className="flex flex-wrap justify-center gap-2">
                   <button onClick={() => handleSuggestion("What are his top skills?")} className="bg-white shadow-sm border border-line rounded-full px-4 py-2 text-xs text-ink hover:border-violet transition-colors">What are his top skills?</button>
-                  <button onClick={() => handleSuggestion("What did he do at SetNext?")} className="bg-white shadow-sm border border-line rounded-full px-4 py-2 text-xs text-ink hover:border-violet transition-colors">What did he do at SetNext?</button>
+                  <button onClick={() => handleSuggestion("What is his most recent work experience?")} className="bg-white shadow-sm border border-line rounded-full px-4 py-2 text-xs text-ink hover:border-violet transition-colors">What is his most recent work experience?</button>
                   <button onClick={() => handleSuggestion("Tell me about the Heart Disease project.")} className="bg-white shadow-sm border border-line rounded-full px-4 py-2 text-xs text-ink hover:border-violet transition-colors">Tell me about the Heart Disease project.</button>
+                  <button onClick={() => handleSuggestion("Can you summarize his resume?")} className="bg-white shadow-sm border border-line rounded-full px-4 py-2 text-xs text-ink hover:border-violet transition-colors">Can you summarize his resume?</button>
+                  <button onClick={() => handleSuggestion("What technologies does he use?")} className="bg-white shadow-sm border border-line rounded-full px-4 py-2 text-xs text-ink hover:border-violet transition-colors">What technologies does he use?</button>
                 </div>
               </div>
             )}

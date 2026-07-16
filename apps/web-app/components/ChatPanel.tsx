@@ -9,7 +9,7 @@ export default function ChatPanel() {
   const { isOpen, toggleChat, messages, addMessage, updateLastMessage, isStreaming, setStreaming } = useChatStore();
   const [input, setInput] = useState("");
   const endOfMessagesRef = useRef<HTMLDivElement>(null);
-  
+
   useEffect(() => {
     endOfMessagesRef.current?.scrollIntoView({ behavior: isStreaming ? "auto" : "smooth" });
   }, [messages, isStreaming]);
@@ -25,8 +25,8 @@ export default function ChatPanel() {
     setStreaming(true);
 
     try {
-      // Use the production API URL if deployed, otherwise fallback to localhost
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4005";
+      // Connect directly to the hosted Render backend
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "";
       const res = await fetch(`${apiUrl}/api/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -42,7 +42,7 @@ export default function ChatPanel() {
         if (done) break;
         const chunk = decoder.decode(value, { stream: true });
         const lines = chunk.split('\n');
-        
+
         for (const line of lines) {
           if (line.startsWith('event: done')) {
             break;
@@ -55,7 +55,7 @@ export default function ChatPanel() {
                 if (data.content) {
                   updateLastMessage(data.content);
                 }
-              } catch(e) {}
+              } catch (e) { }
             }
           }
         }

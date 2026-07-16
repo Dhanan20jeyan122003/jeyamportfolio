@@ -30,7 +30,7 @@ export default function ChatPanel() {
       const res = await fetch(`${apiUrl}/api/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ query, sessionId: "session_" + Date.now() })
+        body: JSON.stringify({ query, history: messages, sessionId: "session_" + Date.now() })
       });
 
       if (!res.body) throw new Error("No body");
@@ -54,6 +54,8 @@ export default function ChatPanel() {
                 const data = JSON.parse(dataStr);
                 if (data.content) {
                   updateLastMessage(data.content);
+                } else if (data.error) {
+                  updateLastMessage("Error: " + data.error);
                 }
               } catch (e) { }
             }

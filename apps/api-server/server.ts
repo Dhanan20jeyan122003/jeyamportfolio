@@ -51,7 +51,7 @@ app.get('/api/health', async (req, res) => {
 });
 
 app.post('/api/chat', async (req, res) => {
-  const { query, sessionId } = req.body;
+  const { query, history, sessionId } = req.body;
   if (!query) {
     return res.status(400).json({ error: 'Query is required' });
   }
@@ -98,6 +98,10 @@ ${contextText}`;
         model: CHAT_MODEL,
         messages: [
           { role: 'system', content: systemPrompt },
+          ...(history || []).map((m: any) => ({
+            role: m.role === 'ai' ? 'assistant' : m.role,
+            content: m.content
+          })),
           { role: 'user', content: query }
         ],
         stream: true

@@ -8,7 +8,7 @@ export default function Nav() {
   return (
     <nav className="flex items-center justify-between py-5 px-10 sticky top-0 z-30 bg-paper/70 backdrop-blur-md border-b border-line">
       <div className="font-grotesk font-bold text-xl">
-        dhananjeyan<span className="text-coral">.</span>
+        Dhananjeyan<span className="text-coral">.</span>
       </div>
       <ul className="hidden md:flex items-center gap-8 list-none">
         <li>

@@ -103,77 +103,102 @@ export default function ChatPanel() {
           </div>
 
           <div className="flex-1 overflow-y-auto overscroll-contain p-5 bg-paper/50 flex flex-col gap-5" data-lenis-prevent="true">
-             {messages.length === 0 && (
-                  <div className="text-center mt-2">
-                    {/* Server Notice */}
-                    <div className="mb-6 rounded-2xl border border-violet/20 bg-gradient-to-br from-violet/10 via-white to-coral/10 p-4 text-left shadow-md">
-                      <div className="flex items-start gap-3">
-                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-violet to-coral text-lg text-white shadow-lg">
-                          ⚡
-                        </div>
-                
-                        <div>
-                          <h4 className="font-grotesk font-semibold text-ink">
-                            Cloud AI Assistant
-                          </h4>
-                
-                          <p className="mt-1 text-xs leading-5 text-ink-soft">
-                            The AI runs on a free cloud server. If it's sleeping, the
-                            <span className="font-semibold text-coral">
-                              {" "}first response may take 20–40 seconds
-                            </span>
-                            {" "}while the server wakes up. After that, replies are much faster.
-                          </p>
-                        </div>
+           {messages.length === 0 && (
+                <div className="flex flex-col gap-5">
+                  {/* AI Server Notice */}
+                  <div className="rounded-2xl border border-violet/20 bg-gradient-to-br from-violet/10 via-white to-coral/10 p-4 shadow-sm">
+                    <div className="flex items-start gap-3">
+                      {/* Icon */}
+                      <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-violet to-coral text-white shadow-md">
+                        🚀
+                      </div>
+              
+                      {/* Content */}
+                      <div className="flex-1 min-w-0">
+                        <h4 className="font-grotesk text-[15px] font-semibold text-ink">
+                          Before You Start
+                        </h4>
+              
+                        <p className="mt-1 text-[12px] leading-5 text-ink-soft">
+                          This AI assistant runs on a{" "}
+                          <span className="font-semibold text-violet">
+                            free cloud server
+                          </span>
+                          . If the server is sleeping, your{" "}
+                          <span className="font-semibold text-coral">
+                            first response
+                          </span>{" "}
+                          may take around{" "}
+                          <span className="font-bold text-coral">
+                            20–40 seconds
+                          </span>{" "}
+                          while it wakes up. Once active, responses will be much faster.
+                        </p>
                       </div>
                     </div>
-                
-                    {/* Welcome */}
-                    <p className="text-ink-soft text-sm mb-6">
-                      Hi, I'm <span className="font-semibold text-violet">Dhananjeyan's AI Assistant</span>.
-                      Ask me anything about his work, skills, projects, or experience!
+                  </div>
+              
+                  {/* Welcome */}
+                  <div className="text-center">
+                    <p className="text-sm text-ink-soft mb-6">
+                      Hi, I'm{" "}
+                      <span className="font-semibold text-violet">
+                        Dhananjeyan's AI Assistant
+                      </span>
+                      .
+                      <br />
+                      Ask me anything about his work, skills,
+                      projects, or experience.
                     </p>
-                
+              
                     {/* Suggestions */}
                     <div className="flex flex-wrap justify-center gap-2">
                       <button
                         onClick={() => handleSuggestion("What are his top skills?")}
-                        className="bg-white shadow-sm border border-line rounded-full px-4 py-2 text-xs text-ink hover:border-violet transition-colors"
+                        className="rounded-full border border-line bg-white px-4 py-2 text-xs text-ink shadow-sm transition-all hover:border-violet hover:bg-violet/5"
                       >
                         What are his top skills?
                       </button>
-                
+              
                       <button
-                        onClick={() => handleSuggestion("What is his most recent work experience?")}
-                        className="bg-white shadow-sm border border-line rounded-full px-4 py-2 text-xs text-ink hover:border-violet transition-colors"
+                        onClick={() =>
+                          handleSuggestion("What is his most recent work experience?")
+                        }
+                        className="rounded-full border border-line bg-white px-4 py-2 text-xs text-ink shadow-sm transition-all hover:border-violet hover:bg-violet/5"
                       >
-                        What is his most recent work experience?
+                        Recent work
                       </button>
-                
+              
                       <button
-                        onClick={() => handleSuggestion("Tell me about the Heart Disease project.")}
-                        className="bg-white shadow-sm border border-line rounded-full px-4 py-2 text-xs text-ink hover:border-violet transition-colors"
+                        onClick={() =>
+                          handleSuggestion("Tell me about the Heart Disease project.")
+                        }
+                        className="rounded-full border border-line bg-white px-4 py-2 text-xs text-ink shadow-sm transition-all hover:border-violet hover:bg-violet/5"
                       >
-                        Tell me about the Heart Disease project.
+                        Heart Disease Project
                       </button>
-                
+              
                       <button
-                        onClick={() => handleSuggestion("Can you summarize his resume?")}
-                        className="bg-white shadow-sm border border-line rounded-full px-4 py-2 text-xs text-ink hover:border-violet transition-colors"
+                        onClick={() =>
+                          handleSuggestion("Can you summarize his resume?")
+                        }
+                        className="rounded-full border border-line bg-white px-4 py-2 text-xs text-ink shadow-sm transition-all hover:border-violet hover:bg-violet/5"
                       >
-                        Can you summarize his resume?
+                        Resume Summary
                       </button>
-                
+              
                       <button
-                        onClick={() => handleSuggestion("What technologies does he use?")}
-                        className="bg-white shadow-sm border border-line rounded-full px-4 py-2 text-xs text-ink hover:border-violet transition-colors"
+                        onClick={() =>
+                          handleSuggestion("What technologies does he use?")
+                        }
+                        className="rounded-full border border-line bg-white px-4 py-2 text-xs text-ink shadow-sm transition-all hover:border-violet hover:bg-violet/5"
                       >
-                        What technologies does he use?
+                        Technologies
                       </button>
                     </div>
                   </div>
-                )}
-
+                </div>
+              )}
             {messages.map((msg, i) => (
               <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                 <div className={`max-w-[85%] rounded-[20px] px-5 py-3.5 text-[14.5px] leading-relaxed text-wrap break-words whitespace-pre-wrap ${msg.role === 'user' ? 'bg-gradient-to-br from-violet to-coral text-white rounded-br-sm shadow-[0_8px_16px_-6px_rgba(124,92,255,0.4)] font-medium' : 'bg-white border border-line/60 text-ink rounded-bl-sm shadow-[0_8px_20px_-8px_rgba(27,16,48,0.08)]'}`}>

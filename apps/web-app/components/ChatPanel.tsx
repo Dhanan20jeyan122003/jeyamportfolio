@@ -103,43 +103,38 @@ export default function ChatPanel() {
           </div>
 
           <div className="flex-1 overflow-y-auto overscroll-contain p-5 bg-paper/50 flex flex-col gap-5" data-lenis-prevent="true">
-              {messages.length === 0 && (
-                <>
-                  {/* Server Wake-up Notice */}
-                  <div className="relative overflow-hidden rounded-2xl border border-violet/20 bg-gradient-to-br from-violet/10 via-white to-coral/10 p-4 mb-6 shadow-sm">
-                    {/* Background Glow */}
-                    <div className="absolute -top-8 -right-8 h-24 w-24 rounded-full bg-violet/20 blur-2xl"></div>
-              
-                    <div className="relative flex items-start gap-3">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-violet to-coral text-white text-lg shadow-md">
-                        🚀
-                      </div>
-              
-                      <div>
-                        <h4 className="font-grotesk font-semibold text-[15px] text-ink">
-                          Before You Start
-                        </h4>
-              
-                        <p className="mt-1 text-[13px] leading-6 text-ink-soft">
-                          This AI assistant runs on a{" "}
-                          <span className="font-semibold text-violet">free cloud server</span>.
-                          If it's inactive, your{" "}
-                          <span className="font-semibold">first message</span> may take
-                          <span className="font-semibold text-coral"> 20–40 seconds</span>{" "}
-                          while the server wakes up. After that, responses will be much
-                          faster.
-                        </p>
+             {messages.length === 0 && (
+                  <div className="text-center mt-2">
+                    {/* Server Notice */}
+                    <div className="mb-6 rounded-2xl border border-violet/20 bg-gradient-to-br from-violet/10 via-white to-coral/10 p-4 text-left shadow-md">
+                      <div className="flex items-start gap-3">
+                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-violet to-coral text-lg text-white shadow-lg">
+                          ⚡
+                        </div>
+                
+                        <div>
+                          <h4 className="font-grotesk font-semibold text-ink">
+                            Cloud AI Assistant
+                          </h4>
+                
+                          <p className="mt-1 text-xs leading-5 text-ink-soft">
+                            The AI runs on a free cloud server. If it's sleeping, the
+                            <span className="font-semibold text-coral">
+                              {" "}first response may take 20–40 seconds
+                            </span>
+                            {" "}while the server wakes up. After that, replies are much faster.
+                          </p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-              
-                  {/* Welcome */}
-                  <div className="mt-2 text-center">
+                
+                    {/* Welcome */}
                     <p className="text-ink-soft text-sm mb-6">
-                      Hi, I'm Dhananjeyan's AI assistant. Ask me anything about his work,
-                      skills, or experience!
+                      Hi, I'm <span className="font-semibold text-violet">Dhananjeyan's AI Assistant</span>.
+                      Ask me anything about his work, skills, projects, or experience!
                     </p>
-              
+                
+                    {/* Suggestions */}
                     <div className="flex flex-wrap justify-center gap-2">
                       <button
                         onClick={() => handleSuggestion("What are his top skills?")}
@@ -147,46 +142,37 @@ export default function ChatPanel() {
                       >
                         What are his top skills?
                       </button>
-              
+                
                       <button
-                        onClick={() =>
-                          handleSuggestion("What is his most recent work experience?")
-                        }
+                        onClick={() => handleSuggestion("What is his most recent work experience?")}
                         className="bg-white shadow-sm border border-line rounded-full px-4 py-2 text-xs text-ink hover:border-violet transition-colors"
                       >
                         What is his most recent work experience?
                       </button>
-              
+                
                       <button
-                        onClick={() =>
-                          handleSuggestion("Tell me about the Heart Disease project.")
-                        }
+                        onClick={() => handleSuggestion("Tell me about the Heart Disease project.")}
                         className="bg-white shadow-sm border border-line rounded-full px-4 py-2 text-xs text-ink hover:border-violet transition-colors"
                       >
                         Tell me about the Heart Disease project.
                       </button>
-              
+                
                       <button
-                        onClick={() =>
-                          handleSuggestion("Can you summarize his resume?")
-                        }
+                        onClick={() => handleSuggestion("Can you summarize his resume?")}
                         className="bg-white shadow-sm border border-line rounded-full px-4 py-2 text-xs text-ink hover:border-violet transition-colors"
                       >
                         Can you summarize his resume?
                       </button>
-              
+                
                       <button
-                        onClick={() =>
-                          handleSuggestion("What technologies does he use?")
-                        }
+                        onClick={() => handleSuggestion("What technologies does he use?")}
                         className="bg-white shadow-sm border border-line rounded-full px-4 py-2 text-xs text-ink hover:border-violet transition-colors"
                       >
                         What technologies does he use?
                       </button>
                     </div>
                   </div>
-                </>
-              )}
+                )}
 
             {messages.map((msg, i) => (
               <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>

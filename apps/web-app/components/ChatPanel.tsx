@@ -26,7 +26,7 @@ export default function ChatPanel() {
 
     try {
       // Connect directly to the hosted Render backend
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "";
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "https://portfolio-api-ulde.onrender.com";
       const res = await fetch(`${apiUrl}/api/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },

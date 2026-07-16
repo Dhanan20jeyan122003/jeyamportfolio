@@ -39,13 +39,13 @@ export default function Home() {
       <section className="relative px-6 md:px-10 py-16 pt-24 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-[1.15fr_0.85fr] gap-12 items-center">
         <div>
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-violet/10 text-violet-dark font-mono text-[12.5px] mb-6 shadow-sm">
-            ✦ full-stack engineer, occasionally caffeinated
+            ✦ passionate engineer, driven by innovation
           </div>
           <h1 className="font-grotesk font-bold text-[clamp(38px,5.4vw,68px)] leading-[1.04] tracking-[-0.02em]">
-            I build products that <span className="text-coral">feel</span> as good as they <span className="text-violet">work</span>.
+            Turning <span className="text-coral">ambitious</span> ideas into <span className="text-violet">intelligent</span> reality.
           </h1>
-          <p className="text-[17px] text-ink-soft max-w-[440px] mt-6">
-            Full-stack engineer specializing in fast, animated, AI-powered web products. Curious what I've shipped? Just ask the orb.
+          <p className="text-[17px] text-ink-soft max-w-[500px] mt-6">
+            Motivated Electronics and Communication Engineering graduate with skills in Java, React.js, Spring Boot, and Generative AI. Experienced in developing full-stack web applications and AI-powered solutions using LLMs, Ollama, and RAG. Quick learner with strong problem-solving and teamwork skills, seeking opportunities as a Software Developer.
           </p>
           <div className="flex gap-4 mt-8">
             <a href="#work" className="font-grotesk font-medium text-[15px] px-6 py-3.5 rounded-full bg-coral text-white shadow-[0_10px_24px_-8px_rgba(255,77,109,0.5)] hover:-translate-y-1 hover:-rotate-1 transition-transform">
@@ -191,11 +191,15 @@ export default function Home() {
           <div className="absolute -top-4 -left-5 bg-lime text-ink font-grotesk font-medium text-[12.5px] px-4 py-2.5 rounded-full flex items-center gap-2 shadow-[0_12px_24px_-10px_rgba(27,16,48,0.4)] -rotate-6 z-10">
             ★ Available for hire
           </div>
-          <div className="absolute inset-0 rounded-[28px] bg-gradient-to-br from-[#E7E1F7] to-[#F3F0FA] border-2 border-dashed border-violet opacity-70 flex flex-col items-center justify-center gap-2 font-mono text-xs text-violet-dark text-center p-5">
-            <span>your photo goes here<br />4:5 portrait</span>
+          <div className="absolute inset-0 rounded-[28px] overflow-hidden shadow-lg border-4 border-white bg-paper-2">
+            <img src="/profile.png" alt="Dhananjeyan M" className="w-full h-full object-cover" />
           </div>
-          <div className="absolute -bottom-5 -right-6 bg-ink text-paper font-grotesk font-medium text-[12.5px] px-4 py-2.5 rounded-full flex items-center gap-2 shadow-[0_12px_24px_-10px_rgba(27,16,48,0.4)] rotate-6 z-10">
-            📍 Remote — IST
+          <div className="absolute -bottom-5 -right-6 bg-ink border border-white/10 text-white font-grotesk font-medium text-[12.5px] px-4 py-2.5 rounded-full flex items-center gap-2.5 shadow-[0_12px_30px_-10px_rgba(27,16,48,0.5)] rotate-6 z-10 hover:rotate-0 hover:scale-105 transition-all duration-300 cursor-default">
+            <span className="relative flex h-2.5 w-2.5 flex-shrink-0">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-lime"></span>
+            </span>
+            <span className="whitespace-nowrap">India (IST) • Remote</span>
           </div>
         </div>
 
@@ -207,6 +211,15 @@ export default function Home() {
             <div className="grid grid-cols-[50px_1fr] md:grid-cols-[90px_1fr] gap-6 py-6 border-t border-line items-start">
               <div className="font-grotesk font-bold text-3xl text-coral opacity-50">01</div>
               <div>
+                <div className="font-grotesk font-medium text-lg">Junior Software Engineer — WBC Software Lab, Karaikkudi</div>
+                <div className="font-mono text-[11.5px] text-ink-soft my-1.5">Mar 2026 — Present</div>
+                <div className="text-sm text-ink-soft max-w-[600px] leading-relaxed">Working as a full-time Junior Software Engineer. Contributing to the development of software solutions , AI Solution and full-stack web applications.</div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-[50px_1fr] md:grid-cols-[90px_1fr] gap-6 py-6 border-t border-line items-start">
+              <div className="font-grotesk font-bold text-3xl text-coral opacity-50">02</div>
+              <div>
                 <div className="font-grotesk font-medium text-lg">AI/ML Engineer Intern — SetNext, Erode</div>
                 <div className="font-mono text-[11.5px] text-ink-soft my-1.5">Dec 2025 — Feb 2026</div>
                 <div className="text-sm text-ink-soft max-w-[600px] leading-relaxed">Developed and trained machine learning models for prediction and data analysis. Assisted in data preprocessing, model evaluation, and AI feature integration.</div>
@@ -214,7 +227,7 @@ export default function Home() {
             </div>
 
             <div className="grid grid-cols-[50px_1fr] md:grid-cols-[90px_1fr] gap-6 py-6 border-t border-line items-start">
-              <div className="font-grotesk font-bold text-3xl text-coral opacity-50">02</div>
+              <div className="font-grotesk font-bold text-3xl text-coral opacity-50">03</div>
               <div>
                 <div className="font-grotesk font-medium text-lg">Full Stack Web Development Intern — Accent Techno Soft</div>
                 <div className="font-mono text-[11.5px] text-ink-soft my-1.5">Jul 2024 — Aug 2024</div>
@@ -223,7 +236,7 @@ export default function Home() {
             </div>
 
             <div className="grid grid-cols-[50px_1fr] md:grid-cols-[90px_1fr] gap-6 py-6 border-t border-line items-start">
-              <div className="font-grotesk font-bold text-3xl text-coral opacity-50">03</div>
+              <div className="font-grotesk font-bold text-3xl text-coral opacity-50">04</div>
               <div>
                 <div className="font-grotesk font-medium text-lg">Android App Development Intern — Phoenix Soft Tech</div>
                 <div className="font-mono text-[11.5px] text-ink-soft my-1.5">Jun 2023 — Jul 2023</div>
@@ -237,7 +250,7 @@ export default function Home() {
       <section id="skills" className="px-6 md:px-10 py-10 md:py-16 max-w-7xl mx-auto">
         <span className="inline-block px-3 py-1.5 rounded-full bg-violet/10 text-violet-dark font-mono text-[12.5px] mb-5">capabilities</span>
         <h2 className="font-grotesk font-bold text-4xl tracking-[-0.01em]">Tools of the trade.</h2>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
           <div className="p-6 bg-paper-2 border border-line rounded-[22px] hover:-translate-y-1 transition-transform">
             <h3 className="font-grotesk font-bold text-[17px] mb-4 text-violet">AI & Generative AI</h3>
@@ -247,20 +260,20 @@ export default function Home() {
               ))}
             </div>
           </div>
-          
+
           <div className="p-6 bg-paper-2 border border-line rounded-[22px] hover:-translate-y-1 transition-transform">
             <h3 className="font-grotesk font-bold text-[17px] mb-4 text-coral">Languages & UI</h3>
             <div className="flex flex-wrap gap-2">
-              {['Java', 'JavaScript', 'HTML5', 'CSS3', 'React.js', 'JSP'].map(skill => (
+              {['Java', 'python', 'JavaScript', 'HTML5', 'CSS3', 'React.js', 'JSP'].map(skill => (
                 <span key={skill} className="font-mono text-[11px] bg-coral/5 border border-coral/20 px-3 py-1.5 rounded-full text-ink-soft">{skill}</span>
               ))}
             </div>
           </div>
-          
+
           <div className="p-6 bg-paper-2 border border-line rounded-[22px] hover:-translate-y-1 transition-transform">
             <h3 className="font-grotesk font-bold text-[17px] mb-4 text-lime-dark">Backend & Data</h3>
             <div className="flex flex-wrap gap-2">
-              {['Spring Boot', 'Node.js', 'Express', 'MySQL', 'MongoDB', 'SQLite'].map(skill => (
+              {['Spring Boot', 'FastAPI', 'Node.js', 'Express', 'MySQL', 'MongoDB', 'SQLite'].map(skill => (
                 <span key={skill} className="font-mono text-[11px] bg-lime/10 border border-lime-dark/20 px-3 py-1.5 rounded-full text-ink-soft">{skill}</span>
               ))}
             </div>
@@ -283,9 +296,14 @@ export default function Home() {
           Got a project? <span className="text-lime">Let's talk.</span>
         </h2>
         <p className="text-paper/65 mt-4 text-[15.5px] relative z-10">Or just ask the orb up top — it's usually faster than email.</p>
-        <button className="font-grotesk font-medium text-[15px] px-6 py-3.5 rounded-full bg-coral text-white shadow-[0_10px_24px_-8px_rgba(255,77,109,0.5)] hover:-translate-y-1 hover:-rotate-1 transition-transform mt-8 relative z-10">
+        <a 
+          href="https://www.linkedin.com/in/dhananjeyan-m-837139217/" 
+          target="_blank" 
+          rel="noreferrer" 
+          className="inline-block font-grotesk font-medium text-[15px] px-6 py-3.5 rounded-full bg-coral text-white shadow-[0_10px_24px_-8px_rgba(255,77,109,0.5)] hover:-translate-y-1 hover:-rotate-1 transition-transform mt-8 relative z-10"
+        >
           Get in touch
-        </button>
+        </a>
         <div className="flex justify-center gap-6 mt-10 relative z-10">
           <a href="mailto:kmayan1967@gmail.com" className="text-paper/70 text-[13px] hover:text-lime transition-colors">Email</a>
           <a href="https://github.com/Dhanan20jeyan122003" target="_blank" rel="noreferrer" className="text-paper/70 text-[13px] hover:text-lime transition-colors">GitHub</a>

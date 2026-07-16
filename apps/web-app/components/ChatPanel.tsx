@@ -98,7 +98,7 @@ export default function ChatPanel() {
             </button>
           </div>
 
-          <div className="flex-1 overflow-y-auto p-5 bg-paper/50 flex flex-col gap-5">
+          <div className="flex-1 overflow-y-auto overscroll-contain p-5 bg-paper/50 flex flex-col gap-5" data-lenis-prevent="true">
             {messages.length === 0 && (
               <div className="text-center mt-4">
                 <p className="text-ink-soft text-sm mb-6">Hi, I'm Dhananjeyan's AI assistant. Ask me anything about his work, skills, or experience!</p>
@@ -112,7 +112,7 @@ export default function ChatPanel() {
 
             {messages.map((msg, i) => (
               <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                <div className={`max-w-[85%] rounded-[20px] px-4.5 py-3 text-[14.5px] leading-relaxed shadow-sm ${msg.role === 'user' ? 'bg-gradient-to-br from-violet to-coral text-white rounded-br-sm' : 'bg-white border border-line/60 text-ink rounded-bl-sm'}`}>
+                <div className={`max-w-[85%] rounded-[20px] px-5 py-3.5 text-[14.5px] leading-relaxed text-wrap break-words whitespace-pre-wrap ${msg.role === 'user' ? 'bg-gradient-to-br from-violet to-coral text-white rounded-br-sm shadow-[0_8px_16px_-6px_rgba(124,92,255,0.4)] font-medium' : 'bg-white border border-line/60 text-ink rounded-bl-sm shadow-[0_8px_20px_-8px_rgba(27,16,48,0.08)]'}`}>
                   {msg.content || <span className="flex items-center gap-1.5 h-5"><span className="w-1.5 h-1.5 bg-violet rounded-full animate-bounce"></span><span className="w-1.5 h-1.5 bg-violet rounded-full animate-bounce [animation-delay:0.15s]"></span><span className="w-1.5 h-1.5 bg-violet rounded-full animate-bounce [animation-delay:0.3s]"></span></span>}
                 </div>
               </div>

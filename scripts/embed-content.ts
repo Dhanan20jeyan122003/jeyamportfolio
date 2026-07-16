@@ -1,6 +1,7 @@
 import { Client } from 'pg';
 import * as dotenv from 'dotenv';
-dotenv.config();
+import path from 'path';
+dotenv.config({ path: path.join(__dirname, '../.env') });
 
 const connectionString = process.env.DATABASE_URL as string;
 const OLLAMA_URL = 'http://192.168.1.16:11434';
@@ -33,8 +34,8 @@ async function embed() {
   console.log('Connected to DB');
 
   try {
-    // Clear existing embeddings
-    await client.query('TRUNCATE content_embeddings RESTART IDENTITY CASCADE;');
+    // Clear existing embeddings for DB content
+    await client.query("DELETE FROM content_embeddings WHERE source_table IN ('profile', 'projects', 'experience', 'skills');");
 
     // Embed Profile
     const profileRes = await client.query('SELECT * FROM profile LIMIT 1');
@@ -75,15 +76,15 @@ async function embed() {
 
     // Embed Skills
     const skillsRes = await client.query('SELECT * FROM skills');
-    for (const s of skillsRes.rows) {
-      const text = `Skill: ${s.name}, Category: ${s.category}, Proficiency: ${s.proficiency} out of 100.`;
-      const embedding = await generateEmbedding(text);
-      await client.query(
-        'INSERT INTO content_embeddings (source_table, source_id, content_text, embedding) VALUES ($1, $2, $3, $4::vector)',
-        ['skills', s.id, text, `[${embedding.join(',')}]`]
-      );
-    }
-    console.log(`Embedded ${skillsRes.rows.length} skills`);
+    const skillsList = skillsRes.rows.map(s => `${s.name} (${s.category}, Proficiency: ${s.proficiency}/100)`).join(', ');
+    const skillsText = `Dhananjeyan's complete list of skills: ${skillsList}.`;
+    
+    const skillsEmbedding = await generateEmbedding(skillsText);
+    await client.query(
+      'INSERT INTO content_embeddings (source_table, source_id, content_text, embedding) VALUES ($1, $2, $3, $4::vector)',
+      ['skills', '00000000-0000-0000-0000-000000000000', skillsText, `[${skillsEmbedding.join(',')}]`]
+    );
+    console.log(`Embedded all ${skillsRes.rows.length} skills as a single chunk`);
 
     console.log('Embedding completed successfully.');
   } catch (err) {

@@ -2,18 +2,20 @@
 
 export default function Marquee() {
   const items = [
-    "TypeScript",
-    "Node.js",
-    "React",
-    "Supabase",
-    "Ollama",
-    "PostgreSQL",
-    "Framer Motion",
-    "Next.js",
+    "Java",
+    "React.js",
     "Spring Boot",
-    "MongoDB",
     "Python",
-    "Java"
+    "FastAPI",
+    "Ollama",
+    "LLMs",
+    "RAG",
+    "JavaScript",
+    "HTML/CSS",
+    "Agentic AI",
+    "MySQL",
+    "MongoDB",
+    "Git"
   ];
 
   const duplicatedItems = [...items, ...items];

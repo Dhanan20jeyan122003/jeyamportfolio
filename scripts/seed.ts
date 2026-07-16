@@ -1,6 +1,7 @@
 import { Client } from 'pg';
 import * as dotenv from 'dotenv';
-dotenv.config();
+import path from 'path';
+dotenv.config({ path: path.join(__dirname, '../.env') });
 
 const connectionString = process.env.DATABASE_URL as string;
 
@@ -69,6 +70,14 @@ const projects = [
 ];
 
 const experience = [
+  {
+    company: 'WBC Software Lab, Karaikkudi',
+    role: 'Junior Software Engineer',
+    start_date: 'Mar 2026',
+    end_date: 'Present',
+    description: 'Working as a full-time Junior Software Engineer. Contributing to the development of software solutions and full-stack web applications.',
+    highlights: ['Software Development', 'Full-stack Web Applications', "Agentic AI"]
+  },
   {
     company: 'SetNext, Erode',
     role: 'AI/ML Engineer Intern',

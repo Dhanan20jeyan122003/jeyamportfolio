@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter", weight: ["40
 
 export const metadata: Metadata = {
   title: "Dhananjeyan M | AI-Powered Portfolio",
-  description: "Full-stack engineer specializing in fast, animated, AI-powered web products.",
+  description: "Motivated Electronics and Communication Engineering graduate with skills in Java, React.js, Spring Boot, and Generative AI.",
 };
 
 export default function RootLayout({

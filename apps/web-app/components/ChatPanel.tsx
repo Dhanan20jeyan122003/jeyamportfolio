@@ -201,9 +201,9 @@ export default function ChatPanel() {
               )}
             {messages.map((msg, i) => (
               <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                <div className={`max-w-[85%] rounded-[20px] px-5 py-3.5 text-[14.5px] leading-relaxed text-wrap break-words whitespace-pre-wrap ${msg.role === 'user' ? 'bg-gradient-to-br from-violet to-coral text-white rounded-br-sm shadow-[0_8px_16px_-6px_rgba(124,92,255,0.4)] font-medium' : 'bg-white border border-line/60 text-ink rounded-bl-sm shadow-[0_8px_20px_-8px_rgba(27,16,48,0.08)]'}`}>
+                <div className={`max-w-[85%] rounded-[20px] px-5 py-3.5 text-[14.5px] leading-relaxed text-wrap break-words ${msg.role === 'user' ? 'bg-gradient-to-br from-violet to-coral text-white rounded-br-sm shadow-[0_8px_16px_-6px_rgba(124,92,255,0.4)] font-medium' : 'bg-white border border-line/60 text-ink rounded-bl-sm shadow-[0_8px_20px_-8px_rgba(27,16,48,0.08)]'}`}>
                   {msg.content ? (
-                    <div className={`prose prose-sm max-w-none prose-p:my-1.5 prose-ul:my-1.5 prose-li:my-0.5 prose-headings:my-2 ${msg.role === 'user' ? 'prose-invert text-white' : 'text-ink'}`}>
+                    <div className={`prose prose-sm max-w-none prose-p:my-1 prose-p:leading-relaxed prose-ul:my-1 prose-li:my-0 prose-headings:my-1.5 ${msg.role === 'user' ? 'prose-invert text-white' : 'text-ink'}`}>
                       <ReactMarkdown>
                         {msg.content}
                       </ReactMarkdown>

@@ -18,7 +18,10 @@ const COHERE_API_KEY = process.env.COHERE_API_KEY as string;
 const CHAT_MODEL = 'llama-3.1-8b-instant'; // Groq
 const EMBED_MODEL = 'embed-english-v3.0'; // Cohere
 
-const client = new Client({ connectionString });
+const client = new Client({ 
+  connectionString,
+  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : undefined
+});
 client.connect().catch(err => console.error('DB connection error', err));
 
 async function generateEmbedding(text: string, inputType: 'search_document' | 'search_query' = 'search_query'): Promise<number[]> {

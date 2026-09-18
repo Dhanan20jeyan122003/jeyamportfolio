@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import * as dotenv from 'dotenv';
-import { Client } from 'pg';
+import { Pool } from 'pg';
 
 import path from 'path';
 dotenv.config({ path: path.join(__dirname, '../../.env') });
@@ -12,17 +12,23 @@ const port = process.env.PORT || 4005;
 app.use(cors());
 app.use(express.json());
 
-const connectionString = process.env.DATABASE_URL as string;
-const GROQ_API_KEY = process.env.GROQ_API_KEY as string;
-const COHERE_API_KEY = process.env.COHERE_API_KEY as string;
+const connectionString = process.env.DATABASE_URL;
+const GROQ_API_KEY = process.env.GROQ_API_KEY;
+const COHERE_API_KEY = process.env.COHERE_API_KEY;
 const CHAT_MODEL = 'groq/compound-mini'; // Groq
 const EMBED_MODEL = 'embed-english-v3.0'; // Cohere
 
-const client = new Client({ 
-  connectionString,
-  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : undefined
+if (!connectionString) console.warn("WARNING: DATABASE_URL is missing!");
+if (!GROQ_API_KEY) console.warn("WARNING: GROQ_API_KEY is missing!");
+if (!COHERE_API_KEY) console.warn("WARNING: COHERE_API_KEY is missing!");
+
+const client = new Pool({ 
+  connectionString: connectionString || "postgresql://postgres:postgres@localhost:5432/postgres",
+  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : undefined,
+  connectionTimeoutMillis: 5000,
+  idleTimeoutMillis: 30000,
+  max: 10
 });
-client.connect().catch(err => console.error('DB connection error', err));
 
 async function generateEmbedding(text: string, inputType: 'search_document' | 'search_query' = 'search_query'): Promise<number[]> {
   const response = await fetch('https://api.cohere.ai/v1/embed', {
@@ -57,6 +63,9 @@ app.post('/api/chat', async (req, res) => {
   const { query, history, sessionId } = req.body;
   if (!query) {
     return res.status(400).json({ error: 'Query is required' });
+  }
+  if (!GROQ_API_KEY || !COHERE_API_KEY || !connectionString) {
+    return res.status(500).json({ error: 'Server environment is misconfigured' });
   }
 
   // Set up SSE headers

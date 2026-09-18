@@ -26,14 +26,19 @@ export default function ChatPanel() {
     setStreaming(true);
 
     try {
-      // Connect directly to the hosted Render backend
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "https://portfolio-api-ulde.onrender.com";
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "";
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 25000); // 25s timeout
+
       const res = await fetch(`${apiUrl}/api/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ query, history: messages, sessionId: "session_" + Date.now() })
+        body: JSON.stringify({ query, history: messages, sessionId: "session_" + Date.now() }),
+        signal: controller.signal
       });
+      clearTimeout(timeoutId);
 
+      if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
       if (!res.body) throw new Error("No body");
       const reader = res.body.getReader();
       const decoder = new TextDecoder();
@@ -63,9 +68,13 @@ export default function ChatPanel() {
           }
         }
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
-      updateLastMessage("Sorry, I'm having trouble connecting to my backend.");
+      if (error.name === 'AbortError') {
+        updateLastMessage("Sorry, the request timed out. Please try again.");
+      } else {
+        updateLastMessage("Sorry, I'm having trouble connecting to my backend.");
+      }
     } finally {
       setStreaming(false);
     }
@@ -120,19 +129,15 @@ export default function ChatPanel() {
                         </h4>
               
                         <p className="mt-1 text-[12px] leading-5 text-ink-soft">
-                          This AI assistant runs on a{" "}
+                          This AI assistant is now powered by{" "}
                           <span className="font-semibold text-violet">
-                            free cloud server
+                            Vercel Serverless
                           </span>
-                          . If the server is sleeping, your{" "}
-                          <span className="font-semibold text-coral">
-                            first response
-                          </span>{" "}
-                          may take around{" "}
+                          . Responses are highly optimized and{" "}
                           <span className="font-bold text-coral">
-                            20–40 seconds
-                          </span>{" "}
-                          while it wakes up. Once active, responses will be much faster.
+                            instant
+                          </span>
+                          ! Ask anything about Dhananjeyan's profile, skills, or projects.
                         </p>
                       </div>
                     </div>

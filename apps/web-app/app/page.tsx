@@ -39,13 +39,16 @@ export default function Home() {
       <section className="relative px-6 md:px-10 py-16 pt-24 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-[1.15fr_0.85fr] gap-12 items-center">
         <div>
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-violet/10 text-violet-dark font-mono text-[12.5px] mb-6 shadow-sm">
-            ✦ passionate engineer, driven by innovation
+            ✦ Dhananjeyan M • AI & Software Engineer
           </div>
           <h1 className="font-grotesk font-bold text-[clamp(38px,5.4vw,68px)] leading-[1.04] tracking-[-0.02em]">
+            <span className="block text-[clamp(18px,2.2vw,24px)] font-mono font-medium text-violet mb-3 tracking-normal">
+              Hi, I'm Dhananjeyan M ✦
+            </span>
             Turning <span className="text-coral">ambitious</span> ideas into <span className="text-violet">intelligent</span> reality.
           </h1>
           <p className="text-[17px] text-ink-soft max-w-[500px] mt-6">
-            Motivated Electronics and Communication Engineering graduate with skills in Java, React.js, Spring Boot, and Generative AI. Experienced in developing full-stack web applications and AI-powered solutions using LLMs, Ollama, and RAG. Quick learner with strong problem-solving and teamwork skills, seeking opportunities as a Software Developer,AI Engineer.
+            Motivated Electronics and Communication Engineering graduate with skills in Java, React.js, Spring Boot, and Generative AI. Experienced in developing full-stack web applications and AI-powered solutions using LLMs, Ollama, and RAG. Quick learner with strong problem-solving and teamwork skills, seeking opportunities as a Software Developer, AI Engineer.
           </p>
           <div className="flex gap-4 mt-8">
             <a href="#work" className="font-grotesk font-medium text-[15px] px-6 py-3.5 rounded-full bg-coral text-white shadow-[0_10px_24px_-8px_rgba(255,77,109,0.5)] hover:-translate-y-1 hover:-rotate-1 transition-transform">
@@ -85,7 +88,7 @@ export default function Home() {
                 <span className="font-mono text-[10.5px] bg-ink/5 border border-line px-3 py-1.5 rounded-full text-ink-soft">Python</span>
                 <span className="font-mono text-[10.5px] bg-ink/5 border border-line px-3 py-1.5 rounded-full text-ink-soft">ML/DL</span>
               </div>
-              <a href="https://github.com/Dhanan20jeyan122003/Final-Year-Project" className="font-mono text-[10px] uppercase tracking-wider border border-line px-3 py-1.5 rounded-full text-ink-soft hover:bg-ink hover:text-white hover:border-ink transition-colors flex items-center gap-1.5" title="View Source">
+              <a href="https://github.com/Dhanan20jeyan122003/Final-Year-Project" target="_blank" rel="noopener noreferrer" className="font-mono text-[10px] uppercase tracking-wider border border-line px-3 py-1.5 rounded-full text-ink-soft hover:bg-ink hover:text-white hover:border-ink transition-colors flex items-center gap-1.5" title="View Dhananjeyan M Heart Disease Prediction Source Code" aria-label="View Dhananjeyan M Heart Disease Prediction Source on GitHub">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                 Source
               </a>
@@ -108,7 +111,7 @@ export default function Home() {
                 <span className="font-mono text-[10.5px] bg-ink/5 border border-line px-3 py-1.5 rounded-full text-ink-soft">React</span>
                 <span className="font-mono text-[10.5px] bg-ink/5 border border-line px-3 py-1.5 rounded-full text-ink-soft">Express</span>
               </div>
-              <a href="https://github.com/Dhanan20jeyan122003/e-commerce-Eflyer" className="font-mono text-[10px] uppercase tracking-wider border border-line px-3 py-1.5 rounded-full text-ink-soft hover:bg-ink hover:text-white hover:border-ink transition-colors flex items-center gap-1.5" title="View Source">
+              <a href="https://github.com/Dhanan20jeyan122003/e-commerce-Eflyer" target="_blank" rel="noopener noreferrer" className="font-mono text-[10px] uppercase tracking-wider border border-line px-3 py-1.5 rounded-full text-ink-soft hover:bg-ink hover:text-white hover:border-ink transition-colors flex items-center gap-1.5" title="View Dhananjeyan M E-Commerce Eflyer Source Code" aria-label="View Dhananjeyan M E-Commerce Eflyer Source on GitHub">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                 Source
               </a>
@@ -131,7 +134,7 @@ export default function Home() {
                 <span className="font-mono text-[10.5px] bg-ink/5 border border-line px-3 py-1.5 rounded-full text-ink-soft">Spring Boot</span>
                 <span className="font-mono text-[10.5px] bg-ink/5 border border-line px-3 py-1.5 rounded-full text-ink-soft">MySQL</span>
               </div>
-              <a href="https://github.com/Dhanan20jeyan122003/School_Management_System" className="font-mono text-[10px] uppercase tracking-wider border border-line px-3 py-1.5 rounded-full text-ink-soft hover:bg-ink hover:text-white hover:border-ink transition-colors flex items-center gap-1.5" title="View Source">
+              <a href="https://github.com/Dhanan20jeyan122003/School_Management_System" target="_blank" rel="noopener noreferrer" className="font-mono text-[10px] uppercase tracking-wider border border-line px-3 py-1.5 rounded-full text-ink-soft hover:bg-ink hover:text-white hover:border-ink transition-colors flex items-center gap-1.5" title="View Dhananjeyan M School Management System Source Code" aria-label="View Dhananjeyan M School Management System Source on GitHub">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                 Source
               </a>
@@ -154,7 +157,7 @@ export default function Home() {
                 <span className="font-mono text-[10.5px] bg-ink/5 border border-line px-3 py-1.5 rounded-full text-ink-soft">HTML/CSS</span>
                 <span className="font-mono text-[10.5px] bg-ink/5 border border-line px-3 py-1.5 rounded-full text-ink-soft">JS</span>
               </div>
-              <a href="https://github.com/Dhanan20jeyan122003/Furniture-website" className="font-mono text-[10px] uppercase tracking-wider border border-line px-3 py-1.5 rounded-full text-ink-soft hover:bg-ink hover:text-white hover:border-ink transition-colors flex items-center gap-1.5" title="View Source">
+              <a href="https://github.com/Dhanan20jeyan122003/Furniture-website" target="_blank" rel="noopener noreferrer" className="font-mono text-[10px] uppercase tracking-wider border border-line px-3 py-1.5 rounded-full text-ink-soft hover:bg-ink hover:text-white hover:border-ink transition-colors flex items-center gap-1.5" title="View Dhananjeyan M Furniture Website Source Code" aria-label="View Dhananjeyan M Furniture Website Source on GitHub">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                 Source
               </a>
@@ -177,7 +180,7 @@ export default function Home() {
                 <span className="font-mono text-[10.5px] bg-ink/5 border border-line px-3 py-1.5 rounded-full text-ink-soft">Java/JSP</span>
                 <span className="font-mono text-[10.5px] bg-ink/5 border border-line px-3 py-1.5 rounded-full text-ink-soft">MySQL</span>
               </div>
-              <a href="https://github.com/Dhanan20jeyan122003/E_Book" className="font-mono text-[10px] uppercase tracking-wider border border-line px-3 py-1.5 rounded-full text-ink-soft hover:bg-ink hover:text-white hover:border-ink transition-colors flex items-center gap-1.5" title="View Source">
+              <a href="https://github.com/Dhanan20jeyan122003/E_Book" target="_blank" rel="noopener noreferrer" className="font-mono text-[10px] uppercase tracking-wider border border-line px-3 py-1.5 rounded-full text-ink-soft hover:bg-ink hover:text-white hover:border-ink transition-colors flex items-center gap-1.5" title="View Dhananjeyan M E-Book Source Code" aria-label="View Dhananjeyan M E-Book Source on GitHub">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                 Source
               </a>
@@ -192,7 +195,7 @@ export default function Home() {
             ★ Available for hire
           </div>
           <div className="absolute inset-0 rounded-[28px] overflow-hidden shadow-lg border-4 border-white bg-paper-2">
-            <img src="/profile.png" alt="Dhananjeyan M" className="w-full h-full object-cover" />
+            <img src="/profile.png" alt="Dhananjeyan M — Junior Software Engineer & AI Engineer Profile" width={320} height={400} className="w-full h-full object-cover" />
           </div>
           <div className="absolute -bottom-5 -right-6 bg-ink border border-white/10 text-white font-grotesk font-medium text-[12.5px] px-4 py-2.5 rounded-full flex items-center gap-2.5 shadow-[0_12px_30px_-10px_rgba(27,16,48,0.5)] rotate-6 z-10 hover:rotate-0 hover:scale-105 transition-all duration-300 cursor-default">
             <span className="relative flex h-2.5 w-2.5 flex-shrink-0">
@@ -299,16 +302,17 @@ export default function Home() {
         <a
           href="https://www.linkedin.com/in/dhananjeyan-m-837139217/"
           target="_blank"
-          rel="noreferrer"
+          rel="noopener noreferrer"
+          aria-label="Connect with Dhananjeyan M on LinkedIn"
           className="inline-block font-grotesk font-medium text-[15px] px-6 py-3.5 rounded-full bg-coral text-white shadow-[0_10px_24px_-8px_rgba(255,77,109,0.5)] hover:-translate-y-1 hover:-rotate-1 transition-transform mt-8 relative z-10"
         >
           Get in touch
         </a>
         <div className="flex justify-center gap-6 mt-10 relative z-10">
-          <a href="mailto:kmayan1967@gmail.com" className="text-paper/70 text-[13px] hover:text-lime transition-colors">Email</a>
-          <a href="https://github.com/Dhanan20jeyan122003" target="_blank" rel="noreferrer" className="text-paper/70 text-[13px] hover:text-lime transition-colors">GitHub</a>
-          <a href="https://www.linkedin.com/in/dhananjeyan-m-837139217/" target="_blank" rel="noreferrer" className="text-paper/70 text-[13px] hover:text-lime transition-colors">LinkedIn</a>
-          <a href="/Resume_.pdf" target="_blank" rel="noreferrer" className="text-paper/70 text-[13px] hover:text-lime transition-colors">Resume</a>
+          <a href="mailto:kmayan1967@gmail.com" aria-label="Send Email to Dhananjeyan M" className="text-paper/70 text-[13px] hover:text-lime transition-colors">Email</a>
+          <a href="https://github.com/Dhanan20jeyan122003" target="_blank" rel="noopener noreferrer" aria-label="Dhananjeyan M GitHub Profile" className="text-paper/70 text-[13px] hover:text-lime transition-colors">GitHub</a>
+          <a href="https://www.linkedin.com/in/dhananjeyan-m-837139217/" target="_blank" rel="noopener noreferrer" aria-label="Dhananjeyan M LinkedIn Profile" className="text-paper/70 text-[13px] hover:text-lime transition-colors">LinkedIn</a>
+          <a href="/Resume_.pdf" target="_blank" rel="noopener noreferrer" aria-label="Download Dhananjeyan M Resume" className="text-paper/70 text-[13px] hover:text-lime transition-colors">Resume</a>
         </div>
       </section>
     </main>

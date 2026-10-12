@@ -15,14 +15,14 @@ app.use(express.json());
 const connectionString = process.env.DATABASE_URL;
 const GROQ_API_KEY = process.env.GROQ_API_KEY;
 const COHERE_API_KEY = process.env.COHERE_API_KEY;
-const CHAT_MODEL = 'groq/compound-mini'; // Groq
+const CHAT_MODEL = process.env.CHAT_MODEL || 'openai/gpt-oss-120b'; // Groq
 const EMBED_MODEL = 'embed-english-v3.0'; // Cohere
 
 if (!connectionString) console.warn("WARNING: DATABASE_URL is missing!");
 if (!GROQ_API_KEY) console.warn("WARNING: GROQ_API_KEY is missing!");
 if (!COHERE_API_KEY) console.warn("WARNING: COHERE_API_KEY is missing!");
 
-const client = new Pool({ 
+const client = new Pool({
   connectionString: connectionString || "postgresql://postgres:postgres@localhost:5432/postgres",
   ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : undefined,
   connectionTimeoutMillis: 5000,
@@ -110,9 +110,9 @@ ${contextText}`;
     // 4. Stream response from Groq
     const groqRes = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
-      headers: { 
+      headers: {
         'Authorization': `Bearer ${GROQ_API_KEY}`,
-        'Content-Type': 'application/json' 
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         model: CHAT_MODEL,

@@ -3,11 +3,12 @@ import { Pool } from 'pg';
 
 let pool: Pool | null = null;
 
-function getPool() {
+function getPool(): Pool | null {
   if (!pool) {
     const connectionString = process.env.DATABASE_URL;
     if (!connectionString) {
-      throw new Error('DATABASE_URL is not set');
+      console.warn('DATABASE_URL is not set, skipping DB connection');
+      return null;
     }
     pool = new Pool({
       connectionString,
@@ -20,7 +21,7 @@ function getPool() {
   return pool;
 }
 
-const CHAT_MODEL = 'groq/compound-mini';
+const CHAT_MODEL = process.env.CHAT_MODEL || 'openai/gpt-oss-120b';
 const EMBED_MODEL = 'embed-english-v3.0';
 
 async function generateEmbedding(text: string): Promise<number[]> {
@@ -47,23 +48,6 @@ async function generateEmbedding(text: string): Promise<number[]> {
   return data.embeddings[0];
 }
 
-const fallbackContext = `
-Dhananjeyan M is an Electronics and Communication Engineering graduate and aspiring software developer. 
-He has hands-on experience in full-stack web and Android app development. 
-Skills: HTML, CSS, JavaScript, Java, React.js, Spring Boot, Node.js, Express, MySQL, MongoDB, Python, AI integration, Generate AI, LLMs, RAG.
-Experience:
-- Junior Software Engineer at WBC Software Lab (Mar 2026 - Present): Contributing to full-stack web applications and Agentic AI.
-- AI/ML Engineer Intern at SetNext (Dec 2025 - Feb 2026): Trained ML models, AI feature integration.
-- Full Stack Web Development Intern at Accent Techno Soft (Jul 2024 - Aug 2024): Built React.js, Node.js, MongoDB apps.
-- Android App Development Intern at Phoenix Soft Tech (Jun 2023 - Jul 2023): Java, SQLite, Google Maps API.
-Projects:
-- Heart Disease Prediction Using Hybrid ML/DL.
-- E-Commerce Eflyer with Node.js/Express.
-- Furniture Website UI/UX.
-- E-Book Management System (Java, JSP, Tomcat).
-- School Management System (Spring Boot, MySQL).
-`;
-
 export async function POST(req: NextRequest) {
   try {
     const { query, history, sessionId } = await req.json();
@@ -76,22 +60,20 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'GROQ_API_KEY is not set' }, { status: 500 });
     }
 
-    let contextText = fallbackContext;
     const dbPool = getPool();
-
-    try {
-      const queryEmbedding = await generateEmbedding(query);
-      const searchRes = await dbPool.query(
-        'SELECT * FROM match_content($1::vector, 0.2, 8)',
-        [`[${queryEmbedding.join(',')}]`]
-      );
-      if (searchRes.rows && searchRes.rows.length > 0) {
-        const contextChunks = searchRes.rows.map(r => r.content_text);
-        contextText = contextChunks.join('\n\n');
-      }
-    } catch (e) {
-      console.error('Vector search failed, using fallback context:', e);
+    if (!dbPool) {
+      return NextResponse.json({ error: 'Database connection is not configured' }, { status: 500 });
     }
+
+    // Embed query and search Supabase vector embeddings
+    const queryEmbedding = await generateEmbedding(query);
+    const searchRes = await dbPool.query(
+      'SELECT * FROM match_content($1::vector, 0.2, 8)',
+      [`[${queryEmbedding.join(',')}]`]
+    );
+
+    const contextChunks = (searchRes.rows || []).map((r: any) => r.content_text);
+    const contextText = contextChunks.join('\n\n');
 
     const systemPrompt = `You are Studio Orb, Dhananjeyan's portfolio AI assistant. 
 If the user says hello or greets you, introduce yourself as Studio Orb and ask what they would like to know about Dhananjeyan's skills, projects, or experience.
@@ -132,7 +114,9 @@ ${contextText}`;
     });
 
     if (!groqRes.ok) {
-      throw new Error('Groq API error: ' + groqRes.statusText);
+      const errText = await groqRes.text().catch(() => '');
+      console.error('Groq API error:', groqRes.status, errText);
+      throw new Error(`Groq API error (${groqRes.status}): ${errText || groqRes.statusText}`);
     }
 
     const stream = new ReadableStream({
@@ -168,10 +152,12 @@ ${contextText}`;
           }
 
           // Asynchronously log the chat to DB after stream completion
-          dbPool.query(
-            'INSERT INTO chat_logs (session_id, question, answer) VALUES ($1, $2, $3)',
-            [sessionId || 'anon', query, fullResponse]
-          ).catch(e => console.error('Error logging chat:', e));
+          if (dbPool) {
+            dbPool.query(
+              'INSERT INTO chat_logs (session_id, question, answer) VALUES ($1, $2, $3)',
+              [sessionId || 'anon', query, fullResponse]
+            ).catch(e => console.error('Error logging chat:', e));
+          }
 
         } catch (error: any) {
           console.error("Stream reading error:", error);

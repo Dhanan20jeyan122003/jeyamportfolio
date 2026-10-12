@@ -13,7 +13,7 @@ export function getSiteUrl(): string {
       ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
       : '') ||
     (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : '') ||
-    'https://jeyamportfolio.vercel.app';
+    'https://dhananjeyanportfolio-ai.vercel.app';
 
   if (!url.startsWith('http://') && !url.startsWith('https://')) {
     url = `https://${url}`;

@@ -13,6 +13,7 @@ export default function StructuredData() {
       'Dhananjeyan',
       'Dhanan jeyan',
       'Dhanan20jeyan122003',
+      'dhananjeyanportfolio-ai',
       'Jeyam',
       'Dhananjeyan M Portfolio',
     ],

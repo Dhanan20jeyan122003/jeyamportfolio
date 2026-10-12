@@ -35,6 +35,7 @@ export const metadata: Metadata = {
     "Dhanan jeyan",
     "Dhanan20jeyan122003",
     "Dhananjeyan Portfolio",
+    "dhananjeyanportfolio-ai",
     "jeyamportfolio",
     "AI Engineer Portfolio",
     "Software Developer Portfolio",

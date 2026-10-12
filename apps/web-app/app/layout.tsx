@@ -110,7 +110,7 @@ export const metadata: Metadata = {
   },
   manifest: '/manifest.webmanifest',
   verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || 'KNB3BWF6i6i9i6UkFgh8_-zjkPn8o2GN5YbT7dU_qzw',
   },
 };
 
